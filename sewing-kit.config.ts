@@ -1,11 +1,10 @@
 /* eslint-env node */
-/* eslint-disable @typescript-eslint/no-var-requires, import/no-extraneous-dependencies */
 
 import {join} from 'path';
 
 import {Env, Plugins} from '@shopify/sewing-kit';
 
-import {ip, port} from './config/server';
+import {assetsUrl, ip, port} from './config/server';
 
 interface EntriesObject {
   [key: string]: string | string[];
@@ -28,7 +27,7 @@ module.exports = function sewingKitConfig(plugins: Plugins, env: Env) {
     plugins: [
       plugins.entry(entryPoints),
       plugins.devServer({ip, port}),
-      plugins.cdn('http://localhost:8080/'),
+      plugins.cdn(assetsUrl),
       plugins.features({
         webpackIncludeCaseSensitivePathsPlugin: false,
         webpackIncludePersistedGraphQLPlugin: false,
