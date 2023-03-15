@@ -1,0 +1,9 @@
+name: example-app
+
+up:
+  - isogun
+  - homebrew:
+      - watchman
+  - node:
+      version: v18.15.0
+      yarn: v1.22.17

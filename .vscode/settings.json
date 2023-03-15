@@ -1,0 +1,32 @@
+{
+  // Place your settings in this file to overwrite default and user settings.
+  "window.title": "${activeEditorMedium}${separator}${rootName}",
+  "javascript.validate.enable": false,
+  "css.validate": false,
+  "scss.validate": false,
+  "eslint.validate": ["graphql"],
+  "stylelint.validate": ["css", "scss"],
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    ".spin/.vscode-server": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    ".vscode-server": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true,
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": false,
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
