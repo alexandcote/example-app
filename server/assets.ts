@@ -2,11 +2,11 @@ import {Header} from '@shopify/network';
 import {Assets, middleware} from '@shopify/sewing-kit-koa';
 import {Context} from 'koa';
 
-import {isDevelopment, assetsUrl, storefrontModulesUrl} from '../config/server';
+import {assetsUrl, storefrontModulesUrl} from '../config/server';
 
 export const assets = middleware({
   assetPrefix: assetsUrl,
-  caching: !isDevelopment,
+  caching: false,
 });
 
 const STOREFRONT_MODULES_ASSETS = Symbol('storefront-modules');
@@ -21,7 +21,7 @@ export function setStorefrontModulesAssets(ctx: Context, assets: Assets) {
 
 export const storefrontModules = async (ctx: Context, next: () => void) => {
   const assets = new Assets({
-    caching: !isDevelopment,
+    caching: false,
     assetPrefix: storefrontModulesUrl,
     userAgent: ctx.get(Header.UserAgent),
     manifestPath: 'build/storefront-modules/assets.json',

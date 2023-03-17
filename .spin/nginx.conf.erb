@@ -40,6 +40,16 @@ server {
     proxy_next_upstream off;
     proxy_read_timeout 30m;
 
+    location /public/cdn/storefront-modules {
+      autoindex         on;
+      alias             /home/spin/src/github.com/alexandcote/example-app/build/storefront-modules/;
+    }
+
+    location /public/cdn/ {
+      autoindex         on;
+      alias             /home/spin/src/github.com/alexandcote/example-app/build/client/;
+    }
+
     location /webpack/assets/storefront-modules {
         proxy_pass http://example_app_storefront_modules_webpack;
     }

@@ -52,7 +52,7 @@ module.exports = (_, options) => {
     .then((config) => {
       updateEntries(config);
       updateCacheDirectory(config);
-      updateOutputDirectory(config);
+      updateOutputDirectory(config, mode);
       usePreactInsteadOfReact(config);
       updateManifestPath(config, browser);
       setupDevServer(config);
@@ -81,9 +81,13 @@ function updateCacheDirectory(config) {
   );
 }
 
-function updateOutputDirectory(config) {
+function updateOutputDirectory(config, mode) {
   const publicPath = new URL(config.output.publicPath);
-  publicPath.pathname = '/webpack/assets/storefront-modules/';
+  publicPath.pathname =
+    mode === 'development'
+      ? '/webpack/assets/storefront-modules/'
+      : '/public/cdn/storefront-modules/';
+
   config.output = {
     ...config.output,
     path: path.resolve(ROOT_DIR, 'build', 'storefront-modules'),

@@ -28,8 +28,6 @@ export async function reactAppMiddleware(ctx: Context) {
   const assets = getAssets(ctx);
   const storefrontModulesAssets = getStorefrontModulesAssets(ctx);
 
-  console.log(storefrontModulesAssets);
-
   const htmlManager = new HtmlManager();
   const asyncAssets = new AsyncAssetManager();
   const hydrationManager = new HydrationManager();
