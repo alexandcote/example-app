@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "sewing-kit dev",
     "build": "NODE_ENV=production sewing-kit build",
+    "clean": "rm -rf build",
     "start": "node --max-old-space-size=1900 --max-http-header-size=16384 build/server/main.js",
-    "build:storefront-modules": "rm -rf build/storefront-modules && yarn build:storefront-modules:latest && yarn build:storefront-modules:baseline",
+    "build:storefront-modules": "yarn build:storefront-modules:latest && yarn build:storefront-modules:baseline",
     "build:storefront-modules:latest": "BROWSER_TARGET=latest webpack --config config/webpack.config.js --mode production",
-    "build:storefront-modules:baseline": "BROWSER_TARGET=baseline webpack --config config/webpack.config.js --mode production"
+    "build:storefront-modules:baseline": "BROWSER_TARGET=baseline webpack --config config/webpack.config.js --mode production",
+    "start:prod": "yarn clean && yarn build && yarn build:storefront-modules && yarn start"
   },
   "devDependencies": {
     "@shopify/build-targets": "^3.0.0",
