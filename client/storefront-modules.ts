@@ -1,8 +1,4 @@
-function main() {
-  // eslint-disable-next-line no-console
-  console.log('Hello, world!');
+export function main() {
+  const test = 1;
+  return test;
 }
-
-main();
-
-export {};

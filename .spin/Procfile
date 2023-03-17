@@ -1,1 +1,2 @@
 server: yarn run dev
+storefront-modules: yarn webpack serve --config config/webpack.config.js

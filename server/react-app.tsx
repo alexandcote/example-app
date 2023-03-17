@@ -22,8 +22,13 @@ import {extract} from '@shopify/react-effect/server';
 import {HydrationManager, HydrationContext} from '@shopify/react-hydrate';
 import {App} from 'foundation/App';
 
+import {getStorefrontModulesAssets} from './assets';
+
 export async function reactAppMiddleware(ctx: Context) {
   const assets = getAssets(ctx);
+  const storefrontModulesAssets = getStorefrontModulesAssets(ctx);
+
+  console.log(storefrontModulesAssets);
 
   const htmlManager = new HtmlManager();
   const asyncAssets = new AsyncAssetManager();
@@ -34,7 +39,7 @@ export async function reactAppMiddleware(ctx: Context) {
   const [styles, scripts, storefrontModules] = await Promise.all([
     assets.styles({name: 'main', asyncAssets: immediateAsyncAssets}),
     assets.scripts({name: 'main', asyncAssets: immediateAsyncAssets}),
-    assets.scripts({
+    storefrontModulesAssets.scripts({
       name: 'storefrontModules',
       asyncAssets: immediateAsyncAssets,
     }),

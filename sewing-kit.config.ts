@@ -15,13 +15,6 @@ module.exports = function sewingKitConfig(plugins: Plugins, env: Env) {
     main: [join(__dirname, env.target)],
   };
 
-  if (env.isClient) {
-    entryPoints.storefrontModules = join(
-      __dirname,
-      'client/storefront-modules.ts',
-    );
-  }
-
   return {
     name: 'online-store-web',
     plugins: [
