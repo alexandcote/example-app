@@ -22,11 +22,11 @@ import {extract} from '@shopify/react-effect/server';
 import {HydrationManager, HydrationContext} from '@shopify/react-hydrate';
 import {App} from 'foundation/App';
 
-import {getStorefrontModulesAssets} from './assets';
+import {STOREFRONT_MODULES_ASSETS} from './assets';
 
 export async function reactAppMiddleware(ctx: Context) {
   const assets = getAssets(ctx);
-  const storefrontModulesAssets = getStorefrontModulesAssets(ctx);
+  const storefrontModulesAssets = getAssets(ctx, STOREFRONT_MODULES_ASSETS);
 
   const htmlManager = new HtmlManager();
   const asyncAssets = new AsyncAssetManager();
